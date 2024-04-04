@@ -14,6 +14,7 @@ async function middleware(request: NextRequest) {
     cookieName: salt,
   })
 
+      console.log("🚀 ~ middleware ~ token:", token)
   
   if (!token) {
     if (request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/register-userpassword') {
