@@ -5,10 +5,13 @@ import { getToken } from 'next-auth/jwt'
 // ฟังก์ชันนี้เป็นตัวอย่าง คุณอาจจะต้องปรับแต่งให้เหมาะสมกับโครงสร้างข้อมูลของคุณ
 async function middleware(request: NextRequest) {
   
+  const salt = "__Secure-authjs.session-token"
+
+
   const token = await getToken({
     req: request,
     secret: process.env.NEXT_PUBLIC_AUTH_SECRET as string,
-    salt: process.env.NEXT_PUBLIC_AUTH_SALT as string,
+    salt: salt,
   })
 
   
