@@ -17,11 +17,11 @@ export const authConfig: NextAuthConfig = {
   cookies: {
     sessionToken: {
       name: '__Secure-authjs.session-token',
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: true,
-      },
+      // options: {
+      //   httpOnly: true,
+      //   sameSite: 'lax',
+      //   secure: true,
+      // },
     }
   },
   callbacks: {
