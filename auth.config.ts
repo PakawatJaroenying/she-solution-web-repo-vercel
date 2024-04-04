@@ -4,7 +4,6 @@ import { JWT } from 'next-auth/jwt'
 import { refreshToken } from './app/lib/server-action/authen'
 
 
-
 export const authConfig: NextAuthConfig = {
   trustHost: true,
   secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
@@ -16,7 +15,7 @@ export const authConfig: NextAuthConfig = {
   },
   cookies: {
     sessionToken: {
-      name: '__Secure-authjs.session-token',
+      name: process.env.NEXT_PUBLIC_COOKIE_NAME,
       options: {
         httpOnly: true,
         sameSite: 'lax',
