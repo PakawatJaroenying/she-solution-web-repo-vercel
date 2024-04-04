@@ -12,6 +12,7 @@ async function middleware(request: NextRequest) {
     req: request,
     secret: process.env.NEXT_PUBLIC_AUTH_SECRET as string,
     salt: salt,
+    cookieName: salt,
   })
 
         console.log("🚀 ~ middleware ~ token:", token)
