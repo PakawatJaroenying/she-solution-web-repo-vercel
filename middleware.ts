@@ -6,13 +6,12 @@ import { getToken } from 'next-auth/jwt'
 async function middleware(request: NextRequest) {
   
   const salt = process.env.NEXT_PUBLIC_AUTH_SALT as string
-  const cookieName = "__Secure-authjs.session-token"
 
   const token = await getToken({
     req: request,
     secret: process.env.NEXT_PUBLIC_AUTH_SECRET as string,
     salt: salt,
-    cookieName: cookieName,
+    cookieName: process.env.NEXT_PUBLIC_COOKIE_NAME as string,
   })
 
       console.log("🚀 ~ middleware ~ token:", token)
