@@ -14,8 +14,8 @@ async function middleware(request: NextRequest) {
     salt: salt,
   })
 
+        console.log("🚀 ~ middleware ~ token:", token)
   
-  if (process.env.NODE_ENV === 'production') {
     if (!token) {
       if (request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/register-userpassword') {
         return NextResponse.redirect(new URL('/login', request.url))
@@ -32,7 +32,6 @@ async function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/register-package', request.url),)
       }
     }
-  }
   
   return NextResponse.next()
 }
