@@ -14,16 +14,16 @@ export const authConfig: NextAuthConfig = {
   session: {
     strategy: 'jwt',
   },
-  cookies: {
-    sessionToken: {
-      name: '__Secure-authjs.session-token',
-      // options: {
-      //   httpOnly: true,
-      //   sameSite: 'lax',
-      //   secure: true,
-      // },
-    }
-  },
+  // cookies: {
+  //   sessionToken: {
+  //     name: '__Secure-authjs.session-token',
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: 'lax',
+  //       secure: true,
+  //     },
+  //   }
+  // },
   callbacks: {
     jwt: async ({ token, user , account ,session,profile ,trigger }) => {
       const jwtExpireInTime = 60 * 45 * 1000

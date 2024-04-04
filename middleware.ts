@@ -7,7 +7,6 @@ async function middleware(request: NextRequest) {
   
   const salt = "__Secure-authjs.session-token"
 
-
   const token = await getToken({
     req: request,
     secret: process.env.NEXT_PUBLIC_AUTH_SECRET as string,
@@ -15,24 +14,23 @@ async function middleware(request: NextRequest) {
     cookieName: salt,
   })
 
-        console.log("🚀 ~ middleware ~ token:", token)
   
-    if (!token) {
-      if (request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/register-userpassword') {
-        return NextResponse.redirect(new URL('/login', request.url))
-      }
-    } else if (token.activatedPackages && token.activatedPackages.length > 0) {
-      if (!request.nextUrl.pathname.startsWith('/dashboard')) {
-        return NextResponse.redirect(new URL('/dashboard', request.url))
-      }
-    } else {
-      if (
-        !request.nextUrl.pathname.startsWith('/register') ||
-        request.nextUrl.pathname === '/register-userpassword'
-      ) {
-        return NextResponse.redirect(new URL('/register-package', request.url),)
-      }
+  if (!token) {
+    if (request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/register-userpassword') {
+      return NextResponse.redirect(new URL('/login', request.url))
     }
+  } else if (token.activatedPackages && token.activatedPackages.length > 0) {
+    if (!request.nextUrl.pathname.startsWith('/dashboard')) {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+  } else {
+    if (
+      !request.nextUrl.pathname.startsWith('/register') ||
+      request.nextUrl.pathname === '/register-userpassword'
+    ) {
+      return NextResponse.redirect(new URL('/register-package', request.url),)
+    }
+  }
   
   return NextResponse.next()
 }
