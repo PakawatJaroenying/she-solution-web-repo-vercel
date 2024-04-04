@@ -1,0 +1,62 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "authen",
+  "steps": [
+    {
+      "file": "app/ui/login/form.tsx",
+      "description": "กด Login ",
+      "line": 47
+    },
+    {
+      "file": "auth.ts",
+      "description": "หลังจากกด Login จะมา method นี้",
+      "line": 16
+    },
+    {
+      "file": "app/api/auth.ts",
+      "description": "เช็ึค User จาก backend ผลลัพธ์จะจได้้ token , refresh  token ไปด้วย",
+      "line": 4
+    },
+    {
+      "file": "auth.ts",
+      "description": "ส่ง user ไปเพืื่อไปเข้า callback JWT",
+      "line": 35
+    },
+    {
+      "file": "auth.config.ts",
+      "description": "callback jwt รับ user ที่ส่งมาจาก authorize method ",
+      "line": 46
+    },
+    {
+      "file": "auth.config.ts",
+      "description": "login ครั้งแรก",
+      "line": 55
+    },
+    {
+      "file": "auth.config.ts",
+      "description": "เคยย login แล้วและเวลา expiresAtที่ set ไว้ยังไมม่หมมด จะะเข้าระบบได้ต่อ",
+      "line": 65
+    },
+    {
+      "file": "auth.config.ts",
+      "description": "login แล้ว totken หมมดอายุ try  to refresh token from backend",
+      "line": 69
+    },
+    {
+      "file": "auth.config.ts",
+      "description": "จัดการ sessionn ซึ่งต้องไป declare  module เพราะของที่ backend ส่งมาไมม่มีใน sessionn ที่คนเขียน next-authกำหนดไว้ทั้งหมด",
+      "line": 88
+    },
+    {
+      "file": "next-auth.d.ts",
+      "description": "declare module ที่พูดถึง",
+      "line": 5
+    },
+    {
+      "file": "middleware.ts",
+      "description": "หลังจาก callback  sessionn เสร็จ จะมา middleware",
+      "line": 19
+    }
+  ],
+  "ref": "dev"
+}

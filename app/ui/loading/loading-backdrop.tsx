@@ -1,0 +1,115 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+
+interface LoadingBackDropProps {
+  open: boolean;
+}
+
+function LoadingBackDrop({ open }: LoadingBackDropProps) {
+  const [domReady, setDomReady] = useState(false);
+
+  React.useEffect(() => {
+    setDomReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [open]);
+
+  if (open && domReady) {
+    return createPortal(
+      <div
+        aria-label="Loading..."
+        role="status"
+        className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center space-x-2 bg-gray-600 bg-opacity-90"
+      >
+        <svg
+          className="h-20 w-20 animate-spin stroke-gray-500"
+          viewBox="0 0 256 256"
+        >
+          <line
+            x1="128"
+            y1="32"
+            x2="128"
+            y2="64"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+          <line
+            x1="195.9"
+            y1="60.1"
+            x2="173.3"
+            y2="82.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+          <line
+            x1="224"
+            y1="128"
+            x2="192"
+            y2="128"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+          <line
+            x1="195.9"
+            y1="195.9"
+            x2="173.3"
+            y2="173.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+          <line
+            x1="128"
+            y1="224"
+            x2="128"
+            y2="192"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+          <line
+            x1="60.1"
+            y1="195.9"
+            x2="82.7"
+            y2="173.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+          <line
+            x1="32"
+            y1="128"
+            x2="64"
+            y2="128"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+          <line
+            x1="60.1"
+            y1="60.1"
+            x2="82.7"
+            y2="82.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="24"
+          ></line>
+        </svg>
+        <span className="text-4xl font-medium text-gray-500">Loading...</span>
+      </div>,
+      document.getElementById("modal-container")!,
+    );
+  }
+}
+
+export default LoadingBackDrop;
